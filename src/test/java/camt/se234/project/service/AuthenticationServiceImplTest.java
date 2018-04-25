@@ -28,8 +28,8 @@ public class AuthenticationServiceImplTest {
 
     @Test
     public void testAuthenicateWithMock() {
-        User user = new User("andrew", "12345");
+        User user = new User("andrew", "12345", "student");
         when(userDao.getUser("andrew", "12345")).thenReturn(user);
-        assertThat(authenticationService.authenticate("andrew", "12345"), is(new User("andrew", "12345")));
+        assertThat(authenticationService.authenticate("andrew", "12345"), is(new User("andrew", "12345", "student")));
     }
 }
