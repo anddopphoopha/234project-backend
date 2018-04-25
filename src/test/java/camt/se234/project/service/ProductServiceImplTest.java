@@ -43,6 +43,13 @@ public class ProductServiceImplTest {
 
     @Test
     public void testGetAvailableProducts() {
+        List<Product> mockProducts = new ArrayList<>();
+        mockProducts.add(new Product("P1", "Beef", "Very delicious", "xxx1", 10.0));
+        mockProducts.add(new Product("P2", "Pork", "Very delicious", "xxx2", 11.0));
+        mockProducts.add(new Product("P3", "Carrot", "Very delicious and can cause gout", "xxx3", 0.0));
+        when(productDao.getProducts()).thenReturn(mockProducts);
+        assertThat(productService.getAllProducts(), hasItems(new Product("P1", "Beef", "Very delicious", "xxx1", 10.0),
+                new Product("P2", "Pork", "Very delicious", "xxx2", 11.0)));
 
     }
 
