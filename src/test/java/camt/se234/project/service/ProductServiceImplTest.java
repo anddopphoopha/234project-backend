@@ -61,16 +61,5 @@ public class ProductServiceImplTest {
         mockProducts.add(new Product("P3", "Carrot", "Very delicious and can cause gout", "xxx3", 0.0));
         when(productDao.getProducts()).thenReturn(mockProducts);
         assertThat(productService.getUnavailableProductSize(), is(1));
-
-    }
-
-    @Test
-    public void testGetSaleOrders() {
-
-    }
-
-    @Test
-    public void testAverageSaleOrderPrice() {
-
     }
 }
