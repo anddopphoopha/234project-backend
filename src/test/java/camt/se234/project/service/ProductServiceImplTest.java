@@ -2,12 +2,17 @@ package camt.se234.project.service;
 
 import camt.se234.project.dao.ProductDao;
 import camt.se234.project.entity.Product;
+
 import static org.hamcrest.Matchers.is;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasItems;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
@@ -31,7 +36,9 @@ public class ProductServiceImplTest {
         mockProducts.add(new Product("P2", "Pork", "Very delicious", "xxx2", 11.0));
         mockProducts.add(new Product("P3", "Chicken", "Very delicious and can cause gout", "xxx3", 50.0));
         when(productDao.getProducts()).thenReturn(mockProducts);
-        assertThat(productService.getAllProducts().size(), is(3));
+        assertThat(productService.getAllProducts(), hasItems(new Product("P1", "Beef", "Very delicious", "xxx1", 10.0),
+                new Product("P2", "Pork", "Very delicious", "xxx2", 11.0),
+                new Product("P3", "Chicken", "Very delicious and can cause gout", "xxx3", 50.0)));
     }
 
     @Test
