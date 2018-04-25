@@ -1,5 +1,9 @@
 package camt.se234.project.service;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.equalTo;
+
 import camt.se234.project.dao.UserDao;
 import camt.se234.project.entity.User;
 import org.junit.Before;
@@ -16,15 +20,16 @@ public class AuthenticationServiceImplTest {
     AuthenticationServiceImpl authenticationService;
 
     @Before
-    public void setup(){
+    public void setup() {
         userDao = mock(UserDao.class);
         authenticationService = new AuthenticationServiceImpl();
         authenticationService.setUserDao(userDao);
     }
 
     @Test
-    public void testAuthenicateWithMock(){
-        List<User> mockUsers = new ArrayList<>();
-
+    public void testAuthenicateWithMock() {
+        User user = new User("andrew", "12345");
+        when(userDao.getUser("andrew", "12345")).thenReturn(user);
+        assertThat(authenticationService.authenticate("andrew", "12345"), is(new User("andrew", "12345")));
     }
 }
