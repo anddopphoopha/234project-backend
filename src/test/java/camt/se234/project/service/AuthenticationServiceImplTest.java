@@ -32,24 +32,4 @@ public class AuthenticationServiceImplTest {
         when(userDao.getUser("andrew", "12345")).thenReturn(user);
         assertThat(authenticationService.authenticate("andrew", "12345"), is(new User("andrew", "12345", "student")));
     }
-
-    public void testGetAllProducts(){
-        
-    }
-
-    public void testGetAvailableProducts(){
-
-    }
-
-    public void testGetUnavailableProductSize(){
-
-    }
-
-    public void testGetSaleOrders(){
-
-    }
-
-    public void testAverageSaleOrderPrice(){
-
-    }
 }
