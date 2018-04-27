@@ -37,14 +37,22 @@ public class SaleOrderServiceImplTest {
 
     @Test
     public void testGetSaleOrders() {
+        List<SaleTransaction> mockTransactions1 = new ArrayList<>();
+        List<SaleTransaction> mockTransactions2 = new ArrayList<>();
+        mockTransactions1.add(new SaleTransaction("T1", new SaleOrder("S1", mockTransactions1),
+                new Product("P1", "Carrot", "Can cause gout", "xxx1", 10.0), 10));
+        mockTransactions1.add(new SaleTransaction("T2", new SaleOrder("S1", mockTransactions1),
+                new Product("P2", "Meat", "Can cause gout", "xxx2", 50.0), 5));
+        mockTransactions2.add(new SaleTransaction("T3", new SaleOrder("S2", mockTransactions2),
+                new Product("P3", "IphoneX", "Can cause gout", "xxx3", 10.0), 10));
+        mockTransactions2.add(new SaleTransaction("T4", new SaleOrder("S2", mockTransactions2),
+                new Product("P4", "Banana", "is yellow", "xxx4", 100.0), 6));
         List<SaleOrder> mockOrders = new ArrayList<>();
-        mockOrders.add(new SaleOrder("S1", new ArrayList<SaleTransaction>()));
-        mockOrders.add(new SaleOrder("S2", new ArrayList<SaleTransaction>()));
-        mockOrders.add(new SaleOrder("S3", new ArrayList<SaleTransaction>()));
+        mockOrders.add(new SaleOrder("S1", mockTransactions1));
+        mockOrders.add(new SaleOrder("S2", mockTransactions2));
         when(orderDao.getOrders()).thenReturn(mockOrders);
-        assertThat(saleOrderService.getSaleOrders(), hasItems(new SaleOrder("S1", new ArrayList<SaleTransaction>()),
-                new SaleOrder("S2", new ArrayList<SaleTransaction>()),
-                new SaleOrder("S3", new ArrayList<SaleTransaction>())));
+        assertThat(saleOrderService.getSaleOrders(), hasItems(new SaleOrder("S1", mockTransactions1),
+                new SaleOrder("S2", mockTransactions2)));
     }
 
     @Test
