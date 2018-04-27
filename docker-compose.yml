@@ -6,7 +6,7 @@ services:
       - "8086:8080"
     volumes:
       - type: bind
-        source: /xxx
+        source: ./projectData
         target: /usr/share/nginx/assets
   frontend:
     image: dto80/project234-frontend:latest
