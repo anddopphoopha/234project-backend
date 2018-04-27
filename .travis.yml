@@ -13,7 +13,7 @@ install:
 - docker build --build-arg JAR_FILE=/target/project.jar -t anddopphoopha/234project-backend
   .
 - docker push anddopphoopha/234project-backend
-- docker pull  dto80/project234-frontend:latest
+- docker pull dto80/project234-frontend:latest
 script:
 - docker-compose -H "$DOCKER_HOST" up -d
 cache:
