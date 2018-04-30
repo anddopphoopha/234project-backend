@@ -7,7 +7,7 @@ services:
     volumes:
       - type: bind
         source: ./projectData
-        target: /usr/share/nginx/html/assets
+        target: /usr/share/nginx/assets
   frontend:
     image: dto80/project234-frontend:latest
     ports:
