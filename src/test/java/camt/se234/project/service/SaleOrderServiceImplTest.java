@@ -1,5 +1,4 @@
 package camt.se234.project.service;
-
 import camt.se234.project.dao.OrderDao;
 import camt.se234.project.entity.Product;
 import camt.se234.project.entity.SaleOrder;
@@ -9,15 +8,12 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItems;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.hasItems;
